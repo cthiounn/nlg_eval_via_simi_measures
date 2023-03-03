@@ -255,6 +255,9 @@ class InfoLM:
             dict_logits_distribution[str(self.temperature)] = torch.nn.Softmax()(
                 logits_distribution / self.temperature)
             if self.use_idf_weights:
+                print(dict_logits_distribution)
+                print(tf_idf_term)
+                print(self.temperature)
                 dict_logits_distribution[str(self.temperature)] = dict_logits_distribution[
                                                                       str(self.temperature)] * tf_idf_term
 
