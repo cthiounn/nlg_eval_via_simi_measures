@@ -244,7 +244,7 @@ class InfoLM:
             masked_input_ids[:, index_to_mask] = self.tokenizer.mask_token_id
             unmasked_data['input_ids'] = masked_input_ids
             outputs = self.model(**unmasked_data, labels=labels)
-            logits_distribution = outputs[1][:, index_to_mask, :].cpu()
+            logits_distribution = outputs[1][:, index_to_mask, :]
             dict_logits_distribution = {}
             pad_token_mask = ((labels.eq(self.tokenizer.pad_token_id)[:, index_to_mask] |
                                labels.eq(self.tokenizer.cls_token_id)[:,
